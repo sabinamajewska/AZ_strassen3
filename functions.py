@@ -12,12 +12,31 @@ def load_matrix_B_from_file(filepath):
         for line in f.readlines():
             line_ints = [int(s) for s in line.split(' ')]  # rzutujemy linię wejścia na listę intów
             loaded_matrix_B.append(line_ints)
+
     return matrix(loaded_matrix_B) # funkcja matrix z listy list robi reprezentację macierzową
 
 def is_square (matrix):
     return len(matrix) == len(matrix.T) # sprawdzam czy liczba wierszy w macierzy A i w macierzy A transponowanej jest równa
 
 # DOPISAĆ: funkcja dzieląca macierz na bloki
+def split(matrix):
+    size = len(matrix)
+    power = 1
+    while (size > power):
+        power = power * 3
+    if size == power:
+        A11 = matrix[0:int(size/3), 0:int(size/3)]
+        A12 = matrix[0:int(size/3), int(size/3):int(2*size/3)]
+        A13 = matrix[0:int(size/3), int(2*size/3):int(size)]
+        A21 = matrix[int(size/3):int(2*size/3), 0:int(size/3)]
+        A22 = matrix[int(size/3):int(2*size/3), int(size/3):int(2*size/3)]
+        A23 = matrix[int(size/3):int(2*size/3), int(2*size/3):int(size)]
+        A31 = matrix[int(2*size/3):int(size), 0:int(size/3)]
+        A32 = matrix[int(2*size/3):int(size), int(size/3):int(2*size/3)]
+        A33 = matrix[int(2*size/3):int(size), int(2*size/3):int(size)]
+        return A11, A12, A13, A21, A22, A23, A31, A32, A33
+    else:
+        print("Macierz nie jest wymiaru 3^n")
 
 def adjust_size (matrix_example): #sprawdzam czy dana macierz kwadratowa jest rozmiaru 3^k
     size = len(matrix_example)
@@ -48,3 +67,4 @@ print(adjust_size(B))
 print(is_square(A))
 print(is_square(B))
 save_matrix_to_file(A,"adjust_size_example_1")
+print(split(adjust_size(B)))
