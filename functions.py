@@ -19,18 +19,18 @@ def is_square (matrix):
 
 # DOPISAĆ: funkcja dzieląca macierz na bloki
 
-def adjust_size (matrix): #sprawdzam czy macierz jest rozmiaru 3^k
-    size = len(matrix)
+def adjust_size (matrix_example): #sprawdzam czy dana macierz kwadratowa jest rozmiaru 3^k
+    size = len(matrix_example)
     power = 1
     while (size > power):
         power = power*3
 
-    if size == power
-        then
-            matrix = matrix
-        else
-            difference = power - size
-            matrix = #muszę tu dodać kolumny i wersze zer w ilości difference
+    if size == power:
+        result = matrix_example
+    else:
+        result = matrix([[0 for x in range(power)] for y in range(power)])
+        result[0:len(matrix_example), 0:len(matrix_example)] = matrix_example
+    return result
 
 
 
@@ -38,6 +38,8 @@ def adjust_size (matrix): #sprawdzam czy macierz jest rozmiaru 3^k
 A = load_matrix_B_from_file("matrix_example_1.txt")
 B = load_matrix_A_from_file("matrix_example_2.txt")
 print(A)
+print(adjust_size(A))
 print(B)
+print(adjust_size(B))
 print(is_square(A))
 print(is_square(B))
