@@ -17,7 +17,11 @@ def load_matrix_B_from_file(filepath):
 def isSquare (matrix):
     return len(matrix) == len(matrix.T) # sprawdzam czy liczba wierszy w macierzy A i w macierzy A transponowanej jest równa
 
+# funkcja dzieląca macierz na bloki
 
+# funkcja sprawdzająca czy macieerz jest postaci 3^k i ewentualnie dopisująca kolumny i wiersze zer
+
+#Przykład
 A = load_matrix_B_from_file("matrix_example_1.txt")
 B = load_matrix_A_from_file("matrix_example_2.txt")
 print(A)
