@@ -14,17 +14,30 @@ def load_matrix_B_from_file(filepath):
             loaded_matrix_B.append(line_ints)
     return matrix(loaded_matrix_B) # funkcja matrix z listy list robi reprezentację macierzową
 
-def isSquare (matrix):
+def is_square (matrix):
     return len(matrix) == len(matrix.T) # sprawdzam czy liczba wierszy w macierzy A i w macierzy A transponowanej jest równa
 
-# funkcja dzieląca macierz na bloki
+# DOPISAĆ: funkcja dzieląca macierz na bloki
 
-# funkcja sprawdzająca czy macieerz jest postaci 3^k i ewentualnie dopisująca kolumny i wiersze zer
+def adjust_size (matrix):
+    size = len(matrix)
+    power = 1
+    while (size > power):
+        power = power*3
+
+    if size == power
+        then
+            matrix = matrix
+        else
+            difference = power - size
+            matrix = #muszę tu dodać kolumny i wersze zer w ilości difference
+
+
 
 #Przykład
 A = load_matrix_B_from_file("matrix_example_1.txt")
 B = load_matrix_A_from_file("matrix_example_2.txt")
 print(A)
 print(B)
-print(isSquare(A))
-print(isSquare(B))
+print(is_square(A))
+print(is_square(B))
