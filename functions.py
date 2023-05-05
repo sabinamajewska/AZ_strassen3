@@ -19,7 +19,7 @@ def is_square (matrix):
 
 # DOPISAĆ: funkcja dzieląca macierz na bloki
 
-def adjust_size (matrix):
+def adjust_size (matrix): #sprawdzam czy macierz jest rozmiaru 3^k
     size = len(matrix)
     power = 1
     while (size > power):
