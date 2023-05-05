@@ -32,7 +32,11 @@ def adjust_size (matrix_example): #sprawdzam czy dana macierz kwadratowa jest ro
         result[0:len(matrix_example), 0:len(matrix_example)] = matrix_example
     return result
 
-
+def save_matrix_to_file(matrix_example, filepath): # funkcja zapisująca macierz do pliku
+    f = open(filepath, "w")  # "w" oznacza, że jeżeli plik nie isnieje, to zostanie utworozny, jeżeli istnieje, to go nadpiszemy
+    f.write(str(adjust_size(matrix_example))) #tutaj akurat zapisuję macierz powstałą w funkcji pomocniczej
+    f.close()
+    return
 
 #Przykład
 A = load_matrix_B_from_file("matrix_example_1.txt")
@@ -43,3 +47,4 @@ print(B)
 print(adjust_size(B))
 print(is_square(A))
 print(is_square(B))
+save_matrix_to_file(A,"adjust_size_example_1")
