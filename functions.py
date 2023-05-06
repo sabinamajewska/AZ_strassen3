@@ -57,6 +57,17 @@ def save_matrix_to_file(matrix_example, filepath): # funkcja zapisująca macierz
     f.close()
     return
 
+def stand_mnoz(A, B):
+    if len(A.T) != len(B):
+        print("Macierze są złych wymiarów.")
+    else:
+        result = matrix([[0 for x in range(len(B.T))] for y in range(len(A))])
+        for i in range(len(A)):
+            for j in range(len(B.T)):
+                result[i, j] = sum(A[i]*(B.T[j]).T)
+        return result
+
+
 #Przykład
 A = load_matrix_B_from_file("matrix_example_1.txt")
 B = load_matrix_A_from_file("matrix_example_2.txt")
@@ -68,3 +79,7 @@ print(is_square(A))
 print(is_square(B))
 save_matrix_to_file(A,"adjust_size_example_1")
 print(split(adjust_size(B)))
+
+C=matrix([[1,0,0],[0,1,0],[0,0,1]])
+D=matrix([[1,2,3,4],[5,6,7,8],[9,10,11,12]])
+print(stand_mnoz(C,D))
