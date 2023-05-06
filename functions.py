@@ -31,19 +31,19 @@ def adjust_size (matrix_example): #sprawdzam czy dana macierz kwadratowa jest ro
         result[0:len(matrix_example), 0:len(matrix_example)] = matrix_example
     return result
 
-def split(matrix_example):
-    matrix_example = adjust_size(matrix_example) #chcemy dzielić macierze postaci 3^k
-    size = len(matrix_example)
+def split(matrix):
+    matrix = adjust_size(matrix) #chcemy dzielić macierze postaci 3^k
+    size = len(matrix)
 
-    A11 = matrix_example[0:int(size / 3), 0:int(size / 3)]
-    A12 = matrix_example[0:int(size / 3), int(size / 3):int(2 * size / 3)]
-    A13 = matrix_example[0:int(size / 3), int(2 * size / 3):int(size)]
-    A21 = matrix_example[int(size / 3):int(2 * size / 3), 0:int(size / 3)]
-    A22 = matrix_example[int(size / 3):int(2 * size / 3), int(size / 3):int(2 * size / 3)]
-    A23 = matrix_example[int(size / 3):int(2 * size / 3), int(2 * size / 3):int(size)]
-    A31 = matrix_example[int(2 * size / 3):int(size), 0:int(size / 3)]
-    A32 = matrix_example[int(2 * size / 3):int(size), int(size / 3):int(2 * size / 3)]
-    A33 = matrix_example[int(2 * size / 3):int(size), int(2 * size / 3):int(size)]
+    A11 = matrix[0:int(size / 3), 0:int(size / 3)]
+    A12 = matrix[0:int(size / 3), int(size / 3):int(2 * size / 3)]
+    A13 = matrix[0:int(size / 3), int(2 * size / 3):int(size)]
+    A21 = matrix[int(size / 3):int(2 * size / 3), 0:int(size / 3)]
+    A22 = matrix[int(size / 3):int(2 * size / 3), int(size / 3):int(2 * size / 3)]
+    A23 = matrix[int(size / 3):int(2 * size / 3), int(2 * size / 3):int(size)]
+    A31 = matrix[int(2 * size / 3):int(size), 0:int(size / 3)]
+    A32 = matrix[int(2 * size / 3):int(size), int(size / 3):int(2 * size / 3)]
+    A33 = matrix[int(2 * size / 3):int(size), int(2 * size / 3):int(size)]
     return A11, A12, A13, A21, A22, A23, A31, A32, A33
 
 
