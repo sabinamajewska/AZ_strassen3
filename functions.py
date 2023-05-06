@@ -1,19 +1,19 @@
 from numpy import matrix
 def load_matrix_A_from_file(filepath):
-    loaded_matrix_A = []  # to będzie nasza macierz A
+    loaded_matrix_A = []
     with open(filepath) as f:
         for line in f.readlines():
             line_ints = [int(s) for s in line.split(' ')]  # rzutujemy linię wejścia na listę intów
             loaded_matrix_A.append(line_ints)
-    return matrix(loaded_matrix_A) # funkcja matrix z listy list robi reprezentację macierzową
+    return matrix(loaded_matrix_A) # matrix() z listy list robi reprezentację macierzową
 def load_matrix_B_from_file(filepath):
-    loaded_matrix_B = []  # to będzie nasza macierz B
+    loaded_matrix_B = []
     with open(filepath) as f:
         for line in f.readlines():
-            line_ints = [int(s) for s in line.split(' ')]  # rzutujemy linię wejścia na listę intów
+            line_ints = [int(s) for s in line.split(' ')]
             loaded_matrix_B.append(line_ints)
 
-    return matrix(loaded_matrix_B) # funkcja matrix z listy list robi reprezentację macierzową
+    return matrix(loaded_matrix_B)
 
 def is_square (matrix):
     return len(matrix) == len(matrix.T) # sprawdzam czy liczba wierszy w macierzy A i w macierzy A transponowanej jest równa
@@ -59,22 +59,22 @@ def stand_mnoz(A, B):
 
 def save_stand_mnoz_to_file(matrix_A, matrix_B, filepath): # funkcja zapisująca macierz do pliku
     f = open(filepath, "w")  # "w" oznacza, że jeżeli plik nie isnieje, to zostanie utworozny, jeżeli istnieje, to go nadpiszemy
-    f.write(str(stand_mnoz(matrix_A, matrix_B))) #tutaj akurat zapisuję macierz powstałą w funkcji pomocniczej
+    f.write(str(stand_mnoz(matrix_A, matrix_B)))
     f.close()
     return
 
-#Przykład
+#Przykłady
 A = load_matrix_B_from_file("matrix_example_1.txt")
 B = load_matrix_A_from_file("matrix_example_2.txt")
-# print(A)
-# print(adjust_size(A))
-# print(B)
-# print(adjust_size(B))
-# print(is_square(A))
-# print(is_square(B))
-# save_stand_mnoz_to_file(A, B,"stand_mnoz_example_1")
+print(A)
+print(adjust_size(A))
+print(B)
+print(adjust_size(B))
+print(is_square(A))
+print(is_square(B))
+save_stand_mnoz_to_file(A, B,"stand_mnoz_example_1")
 print(split(adjust_size(B)))
 
 C=matrix([[1,0,0],[0,1,0],[0,0,1]])
 D=matrix([[1,2,3,4],[5,6,7,8],[9,10,11,12]])
-# print(stand_mnoz(C,D))
+print(stand_mnoz(C,D))
