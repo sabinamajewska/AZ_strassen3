@@ -1,15 +1,6 @@
 from numpy import matrix
 
 
-def load_matrix_from_file(filepath):
-    loaded_matrix_A = []
-    with open(filepath) as f:
-        for line in f.readlines():
-            line_ints = [int(s) for s in line.split(' ')]  # rzutujemy linię wejścia na listę intów
-            loaded_matrix_A.append(line_ints)
-    return matrix(loaded_matrix_A)  # matrix() z listy list robi reprezentację macierzową
-
-
 def is_square (matrix):
     return len(matrix) == len(matrix.T) # sprawdzam czy liczba wierszy w macierzy A i w macierzy A transponowanej jest równa
 
@@ -53,12 +44,6 @@ def stand_mnoz(A, B):
                 result[i, j] = sum(A[i] * (B.T[j]).T)
         return result
 
-
-def save_stand_mnoz_to_file(matrix_A, matrix_B, filepath):  # funkcja zapisująca macierz do pliku
-    f = open(filepath, "w")
-    f.write(str(stand_mnoz(matrix_A, matrix_B)))
-    f.close()
-    return
 
 # Przykłady
 # A = load_matrix_B_from_file("matrix_example_1.txt")
