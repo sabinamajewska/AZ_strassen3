@@ -8,7 +8,7 @@ def time_it(A, B):
     return end - start
 
 # PRZYKŁAD
-A = load_matrix_A_from_file("matrix_example_1.txt")
-B = load_matrix_A_from_file("matrix_example_2.txt")
+A = load_matrix_from_file("../Example/matrix_example_1.txt")
+B = load_matrix_from_file("../Example/matrix_example_2.txt")
 
 print(time_it(A, B))
