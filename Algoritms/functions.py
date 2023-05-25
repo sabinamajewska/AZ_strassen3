@@ -1,28 +1,23 @@
 from numpy import matrix
-def load_matrix_A_from_file(filepath):
+
+
+def load_matrix_from_file(filepath):
     loaded_matrix_A = []
     with open(filepath) as f:
         for line in f.readlines():
             line_ints = [int(s) for s in line.split(' ')]  # rzutujemy linię wejścia na listę intów
             loaded_matrix_A.append(line_ints)
-    return matrix(loaded_matrix_A) # matrix() z listy list robi reprezentację macierzową
-def load_matrix_B_from_file(filepath):
-    loaded_matrix_B = []
-    with open(filepath) as f:
-        for line in f.readlines():
-            line_ints = [int(s) for s in line.split(' ')]
-            loaded_matrix_B.append(line_ints)
+    return matrix(loaded_matrix_A)  # matrix() z listy list robi reprezentację macierzową
 
-    return matrix(loaded_matrix_B)
 
 def is_square (matrix):
     return len(matrix) == len(matrix.T) # sprawdzam czy liczba wierszy w macierzy A i w macierzy A transponowanej jest równa
 
-def adjust_size (matrix_example): #sprawdzam czy dana macierz kwadratowa jest rozmiaru 3^k
+def adjust_size(matrix_example):  # sprawdzam czy dana macierz kwadratowa jest rozmiaru 3^k
     size = len(matrix_example)
     power = 1
-    while (size > power):
-        power = power*3
+    while size > power:
+        power = power * 3
 
     if size == power:
         result = matrix_example
@@ -31,8 +26,9 @@ def adjust_size (matrix_example): #sprawdzam czy dana macierz kwadratowa jest ro
         result[0:len(matrix_example), 0:len(matrix_example)] = matrix_example
     return result
 
+
 def split(matrix):
-    matrix = adjust_size(matrix) #chcemy dzielić macierze postaci 3^k
+    matrix = adjust_size(matrix)  # chcemy dzielić macierze postaci 3^k
     size = len(matrix)
 
     A11 = matrix[0:int(size / 3), 0:int(size / 3)]
@@ -54,27 +50,27 @@ def stand_mnoz(A, B):
         result = matrix([[0 for x in range(len(B.T))] for y in range(len(A))])
         for i in range(len(A)):
             for j in range(len(B.T)):
-                result[i, j] = sum(A[i]*(B.T[j]).T)
+                result[i, j] = sum(A[i] * (B.T[j]).T)
         return result
 
-def save_stand_mnoz_to_file(matrix_A, matrix_B, filepath): # funkcja zapisująca macierz do pliku
-    f = open(filepath, "w")  # "w" oznacza, że jeżeli plik nie isnieje, to zostanie utworozny, jeżeli istnieje, to go nadpiszemy
+
+def save_stand_mnoz_to_file(matrix_A, matrix_B, filepath):  # funkcja zapisująca macierz do pliku
+    f = open(filepath, "w")
     f.write(str(stand_mnoz(matrix_A, matrix_B)))
     f.close()
     return
 
-#Przykłady
-A = load_matrix_B_from_file("matrix_example_1.txt")
-B = load_matrix_A_from_file("matrix_example_2.txt")
-print(A)
-print(adjust_size(A))
-print(B)
-print(adjust_size(B))
-print(is_square(A))
-print(is_square(B))
-save_stand_mnoz_to_file(A, B,"stand_mnoz_example_1")
-print(split(adjust_size(B)))
-
-C=matrix([[1,0,0],[0,1,0],[0,0,1]])
-D=matrix([[1,2,3,4],[5,6,7,8],[9,10,11,12]])
-print(stand_mnoz(C,D))
+# Przykłady
+# A = load_matrix_B_from_file("matrix_example_1.txt")
+# B = load_matrix_A_from_file("matrix_example_2.txt")
+# print(A)
+# print(adjust_size(A))
+# print(B)
+# print(adjust_size(B))
+# print(is_square(A))
+# print(is_square(B))
+# save_stand_mnoz_to_file(A, B,"stand_mnoz_example_1")
+# print(split(adjust_size(B)))
+# C=matrix([[1,0,0],[0,1,0],[0,0,1]])
+# D=matrix([[1,2,3,4],[5,6,7,8],[9,10,11,12]])
+# print(stand_mnoz(C,D))
