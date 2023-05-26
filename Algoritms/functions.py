@@ -80,17 +80,17 @@ def strassen(A, B):
         C32 = M12 + M13 + M14 + M15 + M22
         C33 = M6 + M7 + M8 + M9 + M23
 
-        C_1 = np.concatenate(C11, matrix(np.concatenate(C21, C31)))
-        C_2 = np.concatenate(C12, matrix(np.concatenate(C22, C32)))
-        C_3 = np.concatenate(C13, matrix(np.concatenate(C23, C33)))
-        C = np.concatenate(C_1, matrix(np.concatenate(C_2, C_3, axis=1)), axis=1)
+        C_1 = np.concatenate((C11, matrix(np.concatenate((C21, C31)))))
+        C_2 = np.concatenate((C12, matrix(np.concatenate((C22, C32)))))
+        C_3 = np.concatenate((C13, matrix(np.concatenate((C23, C33)))))
+        C = np.concatenate((C_1, matrix(np.concatenate((C_2, C_3), axis=1))), axis=1)
 
         return C
 
 
 def multiply_matrices_strassen(A,B):
     m = len(A)
-    if adjust_size(A)==A:
+    if adjust_size(A).all()==A.all():
         helper = 1
         AA = A
         BB = B
@@ -127,5 +127,6 @@ def stand_mnoz(A, B):
 # save_stand_mnoz_to_file(A, B,"stand_mnoz_example_1")
 # print(split(adjust_size(B)))
 # C=matrix([[1,0,0],[0,1,0],[0,0,1]])
-# D=matrix([[1,2,3,4],[5,6,7,8],[9,10,11,12]])
+# D=matrix([[1,2,3],[5,6,7],[9,10,11]])
 # print(stand_mnoz(C,D))
+# print(multiply_matrices_strassen(C,D))
