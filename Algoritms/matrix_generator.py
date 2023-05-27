@@ -14,5 +14,5 @@ def save_generated_matrix_to_file(n, filepath):
     return
 
 
-save_generated_matrix_to_file(70, "../Example/generated_matrix_1.txt")
-save_generated_matrix_to_file(70, "../Example/generated_matrix_2.txt")
+save_generated_matrix_to_file(10, "../Example/generated_matrix_1.txt")
+save_generated_matrix_to_file(10, "../Example/generated_matrix_2.txt")
