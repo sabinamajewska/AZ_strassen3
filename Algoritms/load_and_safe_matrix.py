@@ -19,22 +19,6 @@ def save_stand_mnoz_to_file(matrix_A, matrix_B, filepath):  # funkcja zapisując
 
 # PROTOTYP FUNKCJI SCZYTUJĄCEJ DWIE MACIERZE Z JEDNEGO PLIKU (jeszcze nie działa):
 
-# def load_matrices_from_file(filepath):
-#     loaded_matrix_A = []
-#     loaded_matrix_B = []
-#     with open(filepath) as f:
-#         for line in f.readlines():
-#             if line[0] != '!':
-#                 line_ints = [int(s) for s in line.split(' ')]
-#                 loaded_matrix_A.append(line_ints)
-#             else:
-#                 line_ints = [int(s) for s in line.split(' ')]
-#                 loaded_matrix_B.append(line_ints)
-#     A = matrix(loaded_matrix_A)
-#     B = matrix(loaded_matrix_B)
-#     return A, B
-#
-# print(load_matrices_from_file("matrices_to_load.txt"))
-
-# save_stand_mnoz_to_file(load_matrix_from_file("matrices_to_load.txt"), "result_1")
-# print(load_matrix_from_file("matrices_to_load.txt"))
+# PRZYKLAD
+save_multiply_matrices_to_file(load_matrix_from_file("../Example/generated_matrix_1.txt"),
+                               load_matrix_from_file("../Example/generated_matrix_2.txt"), "../Example/wyniczek.txt")
