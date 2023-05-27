@@ -1,5 +1,4 @@
 import numpy
-from functions import *
 
 
 def matrix_generator(n):
