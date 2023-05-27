@@ -81,10 +81,10 @@ def strassen(A, B):
         C32 = M12 + M13 + M14 + M15 + M22
         C33 = M6 + M7 + M8 + M9 + M23
 
-        C_1 = np.concatenate((C11, matrix(np.concatenate((C21, C31)))))
-        C_2 = np.concatenate((C12, matrix(np.concatenate((C22, C32)))))
-        C_3 = np.concatenate((C13, matrix(np.concatenate((C23, C33)))))
-        C = np.concatenate((C_1, matrix(np.concatenate((C_2, C_3), axis=1))), axis=1)
+        C_1 = np.concatenate((C11, C21, C31))
+        C_2 = np.concatenate((C12, C22, C32))
+        C_3 = np.concatenate((C13, C23, C33))
+        C = np.concatenate((C_1, C_2, C_3), axis=1)
 
         return C
 
