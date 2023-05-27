@@ -11,9 +11,9 @@ def load_matrix_from_file(filepath):
     return matrix(loaded_matrix_A)  # matrix() z listy list robi reprezentację macierzową
 
 
-def save_stand_mnoz_to_file(matrix_A, matrix_B, filepath):  # funkcja zapisująca macierz do pliku
+def save_stand_multiplycation_to_file(matrix_A, matrix_B, filepath):  # funkcja zapisująca macierz do pliku
     f = open(filepath, "w")
-    f.write(str(stand_mnoz(matrix_A, matrix_B)))
+    f.write(str(stand_multiplycation(matrix_A, matrix_B)))
     f.close()
     return
 
@@ -24,7 +24,7 @@ def save_multiply_matrices_to_file(matrix_A, matrix_B, filepath):
     time_result = time_it(matrix_A, matrix_B)
     f.write("Czas pracy algorytmu multiply_matrices_strassen dla podanych macierzy wejsciowych to "
             + str(time_result[1]) + '\n')
-    f.write("natomiast czas pracy algorytmu stand_mnoz macierzy to "
+    f.write("Czas pracy algorytmu stand_multiplycation macierzy dla podanych macierzy wejsciowych to "
             + str(time_result[0]) + '\n')
     f.close()
     return

@@ -36,18 +36,6 @@ def split(matrix):
     return A11, A12, A13, A21, A22, A23, A31, A32, A33
 
 
-#mat = [[1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 2, 3, 4, 5, 6, 7, 8, 9]]
-# mat = matrix(mat)
-# sizeM = len(mat)
-# M1 = mat[0:int(sizeM / 3), 0:int(sizeM / 3)]
-# M2 = mat[0:int(sizeM / 3), int(sizeM / 3):int(2 * sizeM / 3)]
-# M3 = mat[0:int(sizeM / 3), int(2 * sizeM / 3):int(sizeM)]
-#
-# print(mat)
-# print(M1)
-# print(M2)
-# print(M1 + M2)
-
 def strassen(A, B):
     m = len(A)
     if m == 1:
@@ -101,29 +89,6 @@ def strassen(A, B):
         return C
 
 
-# mat1 = [[1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1]]
-# mat2 = [[2, 2, 2, 2, 2, 2, 2, 2, 2], [2, 2, 2, 2, 2, 2, 2, 2, 2], [2, 2, 2, 2, 2, 2, 2, 2, 2], [2, 2, 2, 2, 2, 2, 2, 2, 2], [2, 2, 2, 2, 2, 2, 2, 2, 2], [2, 2, 2, 2, 2, 2, 2, 2, 2], [2, 2, 2, 2, 2, 2, 2, 2, 2], [2, 2, 2, 2, 2, 2, 2, 2, 2], [2, 2, 2, 2, 2, 2, 2, 2, 2]]
-# res = strassen(matrix(mat1), matrix(mat2))
-# print(res)
-
-# pierwotna wersja
-# def multiply_matrices_strassen(A, B):
-#     m = len(A)
-#     if adjust_size(A).all() == A.all():
-#         helper = 1
-#         AA = A
-#         BB = B
-#     else:
-#         helper = 0
-#         AA = adjust_size(A)
-#         BB = adjust_size(B)
-#     result = strassen(AA, BB)
-#     if helper == 1:
-#         return result
-#     else:
-#         return result[0:m, 0:m]
-
-
 def multiply_matrices_strassen(A, B):
     m = len(A)
     AA = adjust_size(A)
@@ -135,7 +100,7 @@ def multiply_matrices_strassen(A, B):
         return result[0:m, 0:m]
 
 
-def stand_mnoz(A, B):
+def stand_multiplycation(A, B):
     if len(A.T) != len(B):
         print("Macierze są złych wymiarów.")
     else:
@@ -144,4 +109,3 @@ def stand_mnoz(A, B):
             for j in range(len(B.T)):
                 result[i, j] = sum(A[i] * (B.T[j]).T)
         return result
-
