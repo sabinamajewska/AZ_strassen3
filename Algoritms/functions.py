@@ -22,9 +22,8 @@ def adjust_size(matrix_example):  # sprawdzam czy dana macierz kwadratowa jest r
 
 
 def split(matrix):
-    matrix = adjust_size(matrix)  # chcemy dzielić macierze postaci 3^k
+    # matrix = adjust_size(matrix)  # chcemy dzielić macierze postaci 3^k
     size = len(matrix)
-
     A11 = matrix[0:int(size / 3), 0:int(size / 3)]
     A12 = matrix[0:int(size / 3), int(size / 3):int(2 * size / 3)]
     A13 = matrix[0:int(size / 3), int(2 * size / 3):int(size)]
@@ -37,38 +36,52 @@ def split(matrix):
     return A11, A12, A13, A21, A22, A23, A31, A32, A33
 
 
+#mat = [[1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 2, 3, 4, 5, 6, 7, 8, 9]]
+# mat = matrix(mat)
+# sizeM = len(mat)
+# M1 = mat[0:int(sizeM / 3), 0:int(sizeM / 3)]
+# M2 = mat[0:int(sizeM / 3), int(sizeM / 3):int(2 * sizeM / 3)]
+# M3 = mat[0:int(sizeM / 3), int(2 * sizeM / 3):int(sizeM)]
+#
+# print(mat)
+# print(M1)
+# print(M2)
+# print(M1 + M2)
+
 def strassen(A, B):
     m = len(A)
     if m == 1:
         return A * B
     else:
-        M1 = strassen(split(A)[0] + split(A)[1] + split(A)[2] - split(A)[3] - split(A)[4] - split(A)[7] - split(A)[8],
-                      split(B)[4])
-        M2 = strassen(split(A)[0] - split(A)[3], -split(B)[1] + split(B)[4])
-        M3 = strassen(split(A)[4],
-                      -split(B)[0] + split(B)[1] + split(B)[3] - split(B)[4] - split(B)[5] - split(B)[6] + split(B)[8])
-        M4 = strassen(-split(A)[0] + split(A)[3] + split(A)[4], split(B)[0] - split(B)[1] + split(B)[4])
-        M5 = strassen(split(A)[3] + split(A)[4], -split(B)[0] + split(B)[1])
-        M6 = strassen(split(A)[0], split(B)[0])
-        M7 = strassen(-split(A)[0] + split(A)[6] + split(A)[7], split(B)[0] - split(B)[2] + split(B)[5])
-        M8 = strassen(-split(A)[0] + split(A)[6], split(B)[2] - split(B)[5])
-        M9 = strassen(split(A)[6] + split(A)[7], -split(B)[0] + split(B)[2])
-        M10 = strassen(split(A)[0] + split(A)[1] + split(A)[2] - split(A)[4] - split(A)[5] - split(A)[6] - split(A)[7],
-                       split(B)[5])
-        M11 = strassen(split(A)[7],
-                       -split(B)[0] + split(B)[2] + split(B)[3] - split(B)[4] - split(B)[5] - split(B)[6] + split(B)[7])
-        M12 = strassen(-split(A)[2] + split(A)[7] + split(A)[8], split(B)[4] + split(B)[6] - split(B)[7])
-        M13 = strassen(split(A)[2] - split(A)[8], split(B)[4] - split(B)[7])
-        M14 = strassen(split(A)[2], split(B)[6])
-        M15 = strassen(split(A)[7] + split(A)[8], -split(B)[6] + split(B)[7])
-        M16 = strassen(-split(A)[2] + split(A)[4] + split(A)[5], split(B)[5] + split(B)[6] - split(B)[8])
-        M17 = strassen(split(A)[2] - split(A)[5], split(B)[5] - split(B)[8])
-        M18 = strassen(split(A)[4] + split(A)[5], -split(B)[6] + split(B)[8])
-        M19 = strassen(split(A)[1], split(B)[3])
-        M20 = strassen(split(A)[5], split(B)[7])
-        M21 = strassen(split(A)[3], split(B)[2])
-        M22 = strassen(split(A)[6], split(B)[1])
-        M23 = strassen(split(A)[8], split(B)[8])
+        splitA = split(A)
+        splitB = split(B)
+        M1 = strassen(splitA[0] + splitA[1] + splitA[2] - splitA[3] - splitA[4] - splitA[7] - splitA[8],
+                      splitB[4])
+        M2 = strassen(splitA[0] - splitA[3], -splitB[1] + splitB[4])
+        M3 = strassen(splitA[4],
+                      -splitB[0] + splitB[1] + splitB[3] - splitB[4] - splitB[5] - splitB[6] + splitB[8])
+        M4 = strassen(-splitA[0] + splitA[3] + splitA[4], splitB[0] - splitB[1] + splitB[4])
+        M5 = strassen(splitA[3] + splitA[4], -splitB[0] + splitB[1])
+        M6 = strassen(splitA[0], splitB[0])
+        M7 = strassen(-splitA[0] + splitA[6] + splitA[7], splitB[0] - splitB[2] + splitB[5])
+        M8 = strassen(-splitA[0] + splitA[6], splitB[2] - splitB[5])
+        M9 = strassen(splitA[6] + splitA[7], -splitB[0] + splitB[2])
+        M10 = strassen(splitA[0] + splitA[1] + splitA[2] - splitA[4] - splitA[5] - splitA[6] - splitA[7],
+                       splitB[5])
+        M11 = strassen(splitA[7],
+                       -splitB[0] + splitB[2] + splitB[3] - splitB[4] - splitB[5] - splitB[6] + splitB[7])
+        M12 = strassen(-splitA[2] + splitA[7] + splitA[8], splitB[4] + splitB[6] - splitB[7])
+        M13 = strassen(splitA[2] - splitA[8], splitB[4] - splitB[7])
+        M14 = strassen(splitA[2], splitB[6])
+        M15 = strassen(splitA[7] + splitA[8], -splitB[6] + splitB[7])
+        M16 = strassen(-splitA[2] + splitA[4] + splitA[5], splitB[5] + splitB[6] - splitB[8])
+        M17 = strassen(splitA[2] - splitA[5], splitB[5] - splitB[8])
+        M18 = strassen(splitA[4] + splitA[5], -splitB[6] + splitB[8])
+        M19 = strassen(splitA[1], splitB[3])
+        M20 = strassen(splitA[5], splitB[7])
+        M21 = strassen(splitA[3], splitB[2])
+        M22 = strassen(splitA[6], splitB[1])
+        M23 = strassen(splitA[8], splitB[8])
 
         C11 = M6 + M14 + M19
         C12 = M1 + M4 + M5 + M6 + M12 + M14 + M15
@@ -88,18 +101,35 @@ def strassen(A, B):
         return C
 
 
-def multiply_matrices_strassen(A,B):
+# mat1 = [[1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1]]
+# mat2 = [[2, 2, 2, 2, 2, 2, 2, 2, 2], [2, 2, 2, 2, 2, 2, 2, 2, 2], [2, 2, 2, 2, 2, 2, 2, 2, 2], [2, 2, 2, 2, 2, 2, 2, 2, 2], [2, 2, 2, 2, 2, 2, 2, 2, 2], [2, 2, 2, 2, 2, 2, 2, 2, 2], [2, 2, 2, 2, 2, 2, 2, 2, 2], [2, 2, 2, 2, 2, 2, 2, 2, 2], [2, 2, 2, 2, 2, 2, 2, 2, 2]]
+# res = strassen(matrix(mat1), matrix(mat2))
+# print(res)
+
+# pierwotna wersja
+# def multiply_matrices_strassen(A, B):
+#     m = len(A)
+#     if adjust_size(A).all() == A.all():
+#         helper = 1
+#         AA = A
+#         BB = B
+#     else:
+#         helper = 0
+#         AA = adjust_size(A)
+#         BB = adjust_size(B)
+#     result = strassen(AA, BB)
+#     if helper == 1:
+#         return result
+#     else:
+#         return result[0:m, 0:m]
+
+
+def multiply_matrices_strassen(A, B):
     m = len(A)
-    if adjust_size(A).all()==A.all():
-        helper = 1
-        AA = A
-        BB = B
-    else:
-        helper = 0
-        AA = adjust_size(A)
-        BB = adjust_size(B)
+    AA = adjust_size(A)
+    BB = adjust_size(B)
     result = strassen(AA, BB)
-    if helper == 1:
+    if m == len(AA):
         return result
     else:
         return result[0:m, 0:m]
@@ -115,18 +145,3 @@ def stand_mnoz(A, B):
                 result[i, j] = sum(A[i] * (B.T[j]).T)
         return result
 
-# Przykłady
-# A = load_matrix_B_from_file("matrix_example_1.txt")
-# B = load_matrix_A_from_file("matrix_example_2.txt")
-# print(A)
-# print(adjust_size(A))
-# print(B)
-# print(adjust_size(B))
-# print(is_square(A))
-# print(is_square(B))
-# save_stand_mnoz_to_file(A, B,"stand_mnoz_example_1")
-# print(split(adjust_size(B)))
-# C=matrix([[1,0,0],[0,1,0],[0,0,1]])
-# D=matrix([[1,2,3],[5,6,7],[9,10,11]])
-# print(stand_mnoz(C,D))
-# print(multiply_matrices_strassen(C,D))

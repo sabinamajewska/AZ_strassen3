@@ -21,12 +21,14 @@ def save_stand_mnoz_to_file(matrix_A, matrix_B, filepath):  # funkcja zapisując
 def save_multiply_matrices_to_file(matrix_A, matrix_B, filepath):
     f = open(filepath, "w")
     f.write(str(multiply_matrices_strassen(matrix_A, matrix_B)) + '\n')
+    time_result = time_it(matrix_A, matrix_B)
     f.write("Czas pracy algorytmu multiply_matrices_strassen dla podanych macierzy wejsciowych to "
-            + str(time_it(matrix_A, matrix_B)[1]) + '\n')
+            + str(time_result[1]) + '\n')
     f.write("natomiast czas pracy algorytmu stand_mnoz macierzy to "
-            + str(time_it(matrix_A, matrix_B)[0]))
+            + str(time_result[0]) + '\n')
     f.close()
     return
+
 
 # PRZYKLAD
 save_multiply_matrices_to_file(load_matrix_from_file("../Example/generated_matrix_1.txt"),
