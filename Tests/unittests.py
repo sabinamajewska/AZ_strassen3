@@ -87,3 +87,43 @@ class MyTestCase(unittest.TestCase):
         strass = multiply_matrices_strassen(A, B)
         # then
         self.assertTrue(np.array_equal(stand, strass))
+
+    def test_stand_multiplycation_is_equal_multiply_matrices_strassen4(self):
+        # given
+        A = matrix_generator(100)
+        B = matrix_generator(100)
+        stand = stand_multiplycation(A, B)
+        # when
+        strass = multiply_matrices_strassen(A, B)
+        # then
+        self.assertTrue(np.array_equal(stand, strass))
+
+    def test_stand_multiplycation_is_equal_multiply_matrices_strassen5(self):
+        # given
+        A = matrix([[105, 200, 453, 256], [781, 12, 93, 111], [101, 12, 433, 580], [49, 302, 114, 229]])
+        B = matrix([[17, 1, 0, 5], [400, 507, 123, 123], [5, 0, 2, 7], [890, 671, 22, 432]])
+        stand = stand_multiplycation(A, B)
+        # when
+        strass = multiply_matrices_strassen(A, B)
+        # then
+        self.assertTrue(np.array_equal(stand, strass))
+
+    def test_stand_multiplycation_is_equal_multiply_matrices_strassen6(self):
+        # given
+        A = matrix_generator(27)
+        B = matrix_generator(27)
+        stand = stand_multiplycation(A, B)
+        # when
+        strass = multiply_matrices_strassen(A, B)
+        # then
+        self.assertTrue(np.array_equal(stand, strass))
+
+    def test_stand_multiplycation_is_equal_multiply_matrices_strassen7(self):
+        # given
+        A = matrix([[5]])
+        B = matrix([[48]])
+        stand = stand_multiplycation(A, B)
+        # when
+        strass = multiply_matrices_strassen(A, B)
+        # then
+        self.assertTrue(np.array_equal(stand, strass))
