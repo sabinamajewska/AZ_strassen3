@@ -32,4 +32,4 @@ def save_multiply_matrices_to_file(matrix_A, matrix_B, filepath):
 
 # PRZYKLAD
 save_multiply_matrices_to_file(load_matrix_from_file("../Example/generated_matrix_1.txt"),
-                               load_matrix_from_file("../Example/generated_matrix_2.txt"), "../Example/wyniczek.txt")
+                               load_matrix_from_file("../Example/generated_matrix_2.txt"), "../Example/example_out.txt")
