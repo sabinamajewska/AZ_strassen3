@@ -1,4 +1,4 @@
-from functions import *
+from Algoritms.functions import *
 import time
 
 
