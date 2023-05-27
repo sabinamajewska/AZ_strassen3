@@ -1,5 +1,5 @@
 from Algoritms.functions import *
-from Algoritms.timers import time_it
+from Algoritms.timer import time_it
 
 
 def load_matrix_from_file(filepath):
