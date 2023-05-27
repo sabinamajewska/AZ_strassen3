@@ -90,6 +90,8 @@ def strassen(A, B):
 
 
 def multiply_matrices_strassen(A, B):
+    if len(A.T) != len(A) or len(A) != len(B) or len(A) == 0:
+        return "Macierze sa zlych wymiarow."
     m = len(A)
     AA = adjust_size(A)
     BB = adjust_size(B)
