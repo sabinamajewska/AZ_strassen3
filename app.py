@@ -1,4 +1,4 @@
-from Algoritms.load_and_safe_matrix import *
+from Algoritms.load_and_save_matrix import *
 
 
 # INSTRUKCJA OBSŁUGI PROGRAMU

@@ -1,5 +1,5 @@
 import unittest
-from Algoritms.load_and_safe_matrix import *
+from Algoritms.load_and_save_matrix import *
 from Algoritms.functions import stand_multiplycation, multiply_matrices_strassen
 from Algoritms.matrix_generator import matrix_generator
 
